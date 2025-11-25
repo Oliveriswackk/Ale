@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti 💙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-elements" id="bgElements"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="nav-item" onclick="scrollToSection('inicio')">Inicio</div>
+            <div class="nav-item" onclick="scrollToSection('contador')">Nuestro Tiempo</div>
+            <div class="nav-item" onclick="scrollToSection('cualidades')">Lo Que Admiro</div>
+            <div class="nav-item" onclick="scrollToSection('razones')">Razones</div>
+            <div class="nav-item" onclick="scrollToSection('mensaje')">Mensaje</div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <h1 class="hero-title">Para Alejandra</h1>
+            <div class="glass-heart" onclick="createHearts()">💗</div>
+            <p class="subtitle">Toca el corazón o haz Click</p>
+        </section>
+
+        <!-- Contador -->
+        <section id="contador" class="counter-section">
+            <div class="counter-text">Llevo eligiéndote:</div>
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <div class="counter-number" id="months">0</div>
+                    <div class="counter-label">Meses</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="weeks">0</div>
+                    <div class="counter-label">Semanas</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="days">0</div>
+                    <div class="counter-label">Días</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="hours">0</div>
+                    <div class="counter-label">Horas</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="minutes">0</div>
+                    <div class="counter-label">Minutos</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cualidades -->
+        <section id="cualidades" class="glass-card">
+            <h2>Lo Que Más Admiro de Ti</h2>
+            <div class="qualities-grid">
+                <div class="quality-item">
+                    <div class="quality-icon">✨</div>
+                    <div class="quality-title">Tu Luz</div>
+                    <div class="quality-desc">Iluminas cada momento</div>
+                </div>
+                <div class="quality-item">
+                    <div class="quality-icon">🌟</div>
+                    <div class="quality-title">Tu Sonrisa</div>
+                    <div class="quality-desc">Hace todo mejor</div>
+                </div>
+                <div class="quality-item">
+                    <div class="quality-icon">💫</div>
+                    <div class="quality-title">Tu Esencia</div>
+                    <div class="quality-desc">Única e irreemplazable</div>
+                </div>
+                <div class="quality-item">
+                    <div class="quality-icon">💝</div>
+                    <div class="quality-title">Tu Corazón</div>
+                    <div class="quality-desc">Puro y sincero</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Razones -->
+        <section id="razones" class="glass-card">
+            <h2>Por Qué Eres Especial</h2>
+            <div class="reasons-list">
+                <div class="reason-item">💜 Tu forma única de ver el mundo</div>
+                <div class="reason-item">💙 Cómo me haces reír sin esfuerzo</div>
+                <div class="reason-item">💗 Tu bondad y generosidad genuinas</div>
+                <div class="reason-item">💕 La manera en que me apoyas siempre</div>
+                <div class="reason-item">💖 Tu autenticidad y sinceridad</div>
+                <div class="reason-item">💝 Cada detalle que te hace ser tú</div>
+            </div>
+        </section>
+
+        <!-- Mensaje Final -->
+        <section id="mensaje" class="glass-card">
+            <h2>Para Ti</h2>
+            <p>
+                Gracias por ser quien eres, por cada momento compartido y por todos 
+                los que están por venir. Cada día a tu lado es un regalo que valoro 
+                profundamente. Eres increíble y quiero que lo sepas cada día.
+            </p>
+            <p class="love-note">
+                Te quiero muchísimo 💙
+            </p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
