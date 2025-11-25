@@ -1,73 +1,64 @@
 // Crear burbujas de fondo
-function createBubbles() {
-    const container = document.getElementById('bgElements');
-    const sizes = [80, 120, 160, 200, 250];
-    
-    for (let i = 0; i < 6; i++) {
-        const bubble = document.createElement('div');
-        bubble.className = 'bubble';
-        const size = sizes[Math.floor(Math.random() * sizes.length)];
-        bubble.style.width = size + 'px';
-        bubble.style.height = size + 'px';
-        bubble.style.left = Math.random() * 100 + '%';
-        bubble.style.top = Math.random() * 100 + '%';
-        bubble.style.animationDelay = Math.random() * 5 + 's';
-        bubble.style.animationDuration = (15 + Math.random() * 10) + 's';
-        container.appendChild(bubble);
-    }
+for (let i = 0; i < 7; i++) {
+    const b = document.createElement("div");
+    const s = 80 + Math.random() * 150;
+    b.className = "bubble";
+    b.style.width = s + "px";
+    b.style.height = s + "px";
+    b.style.left = Math.random() * 100 + "%";
+    b.style.top = Math.random() * 100 + "%";
+    b.style.animationDelay = Math.random() * 8 + "s";
+    document.body.appendChild(b);
 }
 
-// Contador desde el 1 de septiembre 2025
-function updateCounter() {
-    const startDate = new Date('2025-09-01T00:00:00');
-    const now = new Date();
-    const diff = now - startDate;
-
-    const minutes = Math.floor(diff / (1000 * 60));
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const weeks = Math.floor(days / 7);
-    const months = Math.floor(days / 30);
-
-    document.getElementById('minutes').textContent = minutes.toLocaleString();
-    document.getElementById('hours').textContent = hours.toLocaleString();
-    document.getElementById('days').textContent = days.toLocaleString();
-    document.getElementById('weeks').textContent = weeks.toLocaleString();
-    document.getElementById('months').textContent = months.toLocaleString();
+// Función para scroll suave a secciones
+function go(id) {
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
 }
 
-// Crear corazones flotantes
-function createHearts() {
-    const hearts = ['💗', '💜', '💙', '💕', '💖'];
+// Contador desde el 1 de septiembre 2024
+function contar() {
+    const inicio = new Date("2024-09-01T00:00:00");
+    const ahora = new Date();
+    const ms = ahora - inicio;
+
+    const dias = Math.floor(ms / (1000 * 60 * 60 * 24));
+    const horas = Math.floor(ms / (1000 * 60 * 60));
+    const mins = Math.floor(ms / (1000 * 60));
+
+    document.getElementById("dias").textContent = dias;
+    document.getElementById("horas").textContent = horas.toLocaleString();
+    document.getElementById("mins").textContent = mins.toLocaleString();
+}
+
+// Iniciar contador
+contar();
+setInterval(contar, 60000); // Actualizar cada minuto
+
+// Función para crear corazones flotantes
+function hearts() {
+    const colors = ["💗", "💜", "💙", "💕", "💖"];
     for (let i = 0; i < 15; i++) {
-        const heart = document.createElement('div');
-        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        heart.style.position = 'fixed';
-        heart.style.fontSize = (Math.random() * 2 + 1.5) + 'em';
-        heart.style.left = (Math.random() * 90 + 5) + '%';
-        heart.style.top = '100%';
-        heart.style.pointerEvents = 'none';
-        heart.style.zIndex = '9999';
-        heart.style.transition = 'all 3s ease-out';
-        document.body.appendChild(heart);
-        
+        const h = document.createElement("div");
+        h.textContent = colors[Math.floor(Math.random() * colors.length)];
+        h.style.position = "fixed";
+        h.style.fontSize = (1.6 + Math.random() * 1.8) + "em";
+        h.style.left = (5 + Math.random() * 90) + "%";
+        h.style.top = "102%";
+        h.style.transition = "4s ease-out";
+        h.style.pointerEvents = "none";
+        h.style.zIndex = "9999";
+        document.body.appendChild(h);
+
         setTimeout(() => {
-            heart.style.top = '-10%';
-            heart.style.opacity = '0';
-            heart.style.transform = 'translateX(' + (Math.random() * 200 - 100) + 'px) rotate(' + (Math.random() * 360) + 'deg) scale(1.5)';
+            h.style.top = "-10%";
+            h.style.opacity = "0";
+            h.style.transform = `translateX(${Math.random() * 160 - 80}px) rotate(${Math.random() * 360}deg) scale(1.4)`;
         }, 100);
         
-        setTimeout(() => heart.remove(), 3100);
+        setTimeout(() => h.remove(), 4200);
     }
 }
-
-// Scroll suave
-function scrollToSection(id) {
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-// Inicializar
-createBubbles();
-updateCounter();
-setInterval(updateCounter, 60000);

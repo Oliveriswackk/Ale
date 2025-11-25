@@ -6,36 +6,209 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #E8D5F2 0%, #C9E4F7 100%);
+    background: #ede6ff;
     min-height: 100vh;
     overflow-x: hidden;
-    position: relative;
 }
 
-/* Elementos decorativos de fondo */
-.bg-elements {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-    pointer-events: none;
-}
-
+/* --- Fondo glass con burbujas suaves --- */
 .bubble {
-    position: absolute;
+    position: fixed;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 200, 255, 0.2));
-    backdrop-filter: blur(20px);
-    animation: float 20s infinite ease-in-out;
+    background: radial-gradient(rgba(255, 255, 255, .6), rgba(255, 200, 255, .15));
+    filter: blur(2px);
+    animation: float 18s infinite ease-in-out;
+    pointer-events: none;
+    z-index: 0;
 }
 
 @keyframes float {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(30px, -50px) rotate(90deg); }
-    50% { transform: translate(-20px, -80px) rotate(180deg); }
-    75% { transform: translate(-40px, -30px) rotate(270deg); }
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-80px) translateX(40px);
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+    }
 }
 
-/* Resto del CSS: header, contadores, hero, cards, grid de cualidades, razones, responsive */
-/* ... copia tal cual tu CSS anterior ... */
+/* --- Header --- */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    padding: 14px 26px;
+    background: rgba(255, 255, 255, .25);
+    border-radius: 40px;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, .35);
+    z-index: 1000;
+}
+
+.nav-item {
+    cursor: pointer;
+    padding: 6px 18px;
+    color: #6a4b90;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: .3s;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, .55);
+    transform: translateY(-2px);
+}
+
+/* --- Contenedor --- */
+.container {
+    max-width: 850px;
+    margin: auto;
+    padding: 140px 25px 70px;
+    z-index: 2;
+    position: relative;
+}
+
+/* --- Hero con estética LovApp --- */
+.hero-title {
+    font-size: 4.8em;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(135deg, #6a4b90, #E91E63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.heart-3d {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 25px;
+    background: radial-gradient(rgba(255, 140, 180, .55), rgba(255, 255, 255, .2));
+    border-radius: 50%;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, .4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.5em;
+    animation: pulse 3.2s infinite;
+    cursor: pointer;
+    transition: .35s;
+    box-shadow: 0 18px 45px rgba(233, 30, 99, .32);
+}
+
+.heart-3d:hover {
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.25em;
+    color: #6a4b90;
+    opacity: .85;
+}
+
+/* --- CARD GLASS --- */
+.card {
+    margin-top: 60px;
+    background: rgba(255, 255, 255, .25);
+    backdrop-filter: blur(16px);
+    border-radius: 28px;
+    padding: 45px;
+    border: 1px solid rgba(255, 255, 255, .35);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .08);
+    transition: .35s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 22px;
+    font-size: 2em;
+    background: linear-gradient(135deg, #6a4b90, #E91E63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card p {
+    text-align: center;
+    font-size: 1.15em;
+    color: #555;
+    line-height: 1.7;
+    margin-top: 10px;
+}
+
+/* --- GRID de cualidades --- */
+.grid {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.item {
+    padding: 25px;
+    background: rgba(255, 255, 255, .35);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    text-align: center;
+    transition: .3s;
+}
+
+.item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(107, 75, 160, .2);
+}
+
+.item .icon {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.item .t {
+    font-weight: 600;
+    color: #6a4b90;
+    margin-bottom: 6px;
+}
+
+.item .d {
+    font-size: .9em;
+    color: #666;
+}
+
+/* --- Lista razones --- */
+.reason {
+    padding: 18px 25px;
+    background: rgba(255, 255, 255, .35);
+    border-radius: 18px;
+    margin-bottom: 12px;
+    color: #6a4b90;
+    font-size: 1.05em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.reason:hover {
+    background: rgba(255, 255, 255, .55);
+    transform: translateX(14px);
+    box-shadow: 0 10px 30px rgba(233, 30, 99, .25);
+}
