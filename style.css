@@ -6,209 +6,319 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #ede6ff;
+    background: linear-gradient(135deg, #a8d5ff 0%, #d4e4ff 50%, #e0bff7 100%);
     min-height: 100vh;
     overflow-x: hidden;
+    position: relative;
 }
 
-/* --- Fondo glass con burbujas suaves --- */
+/* --- Elementos decorativos suaves --- */
 .bubble {
     position: fixed;
     border-radius: 50%;
-    background: radial-gradient(rgba(255, 255, 255, .6), rgba(255, 200, 255, .15));
-    filter: blur(2px);
-    animation: float 18s infinite ease-in-out;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    animation: float 12s infinite ease-in-out; /* más rápido */
     pointer-events: none;
     z-index: 0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 @keyframes float {
-    0% {
-        transform: translateY(0) translateX(0);
-    }
-    50% {
-        transform: translateY(-80px) translateX(40px);
-    }
-    100% {
-        transform: translateY(0) translateX(0);
-    }
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(40px, -60px); }
+    66% { transform: translate(-40px, 40px); }
 }
 
-/* --- Header --- */
+/* --- Header suave --- */
 nav {
     position: fixed;
-    top: 20px;
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 12px;
-    padding: 14px 26px;
-    background: rgba(255, 255, 255, .25);
-    border-radius: 40px;
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, .35);
+    gap: 8px;
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     z-index: 1000;
+    box-shadow: 0 8px 32px rgba(168, 213, 255, 0.2);
 }
 
 .nav-item {
     cursor: pointer;
-    padding: 6px 18px;
-    color: #6a4b90;
+    padding: 8px 20px;
+    color: #5a8fc4;
     font-weight: 500;
+    font-size: 0.9em;
     border-radius: 25px;
-    transition: .3s;
+    transition: all 0.3s ease;
 }
 
 .nav-item:hover {
-    background: rgba(255, 255, 255, .55);
+    background: rgba(255, 255, 255, 0.7);
+    color: #4a7fb4;
     transform: translateY(-2px);
 }
 
 /* --- Contenedor --- */
 .container {
-    max-width: 850px;
+    max-width: 900px;
     margin: auto;
-    padding: 140px 25px 70px;
+    padding: 140px 30px 80px;
     z-index: 2;
     position: relative;
 }
 
-/* --- Hero con estética LovApp --- */
+/* --- Hero limpio --- */
+#inicio {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
 .hero-title {
-    font-size: 4.8em;
+    font-size: 5em;
     font-weight: 700;
     text-align: center;
-    background: linear-gradient(135deg, #6a4b90, #E91E63);
+    background: linear-gradient(135deg, #5a8fc4, #8bb4e8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
-    letter-spacing: -2px;
+    background-clip: text;
+    margin-bottom: 30px;
+    letter-spacing: -3px;
+    filter: drop-shadow(0 2px 10px rgba(90, 143, 196, 0.3));
 }
 
-.heart-3d {
+.heart-img {
     width: 200px;
     height: 200px;
-    margin: 0 auto 25px;
-    background: radial-gradient(rgba(255, 140, 180, .55), rgba(255, 255, 255, .2));
-    border-radius: 50%;
-    backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 255, 255, .4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4.5em;
-    animation: pulse 3.2s infinite;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 30px;
     cursor: pointer;
-    transition: .35s;
-    box-shadow: 0 18px 45px rgba(233, 30, 99, .32);
+    animation: heartbeat 2s infinite;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.heart-3d:hover {
-    transform: scale(1.1);
+.heart-img:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 10px 25px rgba(168, 213, 255, 0.4));
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.08);
-    }
+/* Latido suave */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
 }
 
 .subtitle {
     text-align: center;
-    font-size: 1.25em;
-    color: #6a4b90;
-    opacity: .85;
+    font-size: 1.2em;
+    color: #5a8fc4;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
-/* --- CARD GLASS --- */
+/* --- Cards suaves --- */
 .card {
-    margin-top: 60px;
-    background: rgba(255, 255, 255, .25);
-    backdrop-filter: blur(16px);
+    margin-top: 40px;
+    background: rgba(227, 227, 227, 0.132);
+    backdrop-filter: blur(10px);
     border-radius: 28px;
-    padding: 45px;
-    border: 1px solid rgba(255, 255, 255, .35);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, .08);
-    transition: .35s;
+    padding: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 40px rgba(168, 213, 255, 0.15);
+    transition: all 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(168, 213, 255, 0.25);
 }
 
 .card h2 {
     text-align: center;
-    margin-bottom: 22px;
+    margin-bottom: 30px;
     font-size: 2em;
-    background: linear-gradient(135deg, #6a4b90, #E91E63);
+    background: linear-gradient(135deg, #5a8fc4, #8bb4e8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    letter-spacing: -1px;
 }
 
 .card p {
     text-align: center;
     font-size: 1.15em;
-    color: #555;
-    line-height: 1.7;
-    margin-top: 10px;
+    color: #4a6b8a;
+    line-height: 1.8;
+    font-weight: 400;
 }
 
-/* --- GRID de cualidades --- */
+/* --- Grid limpio --- */
 .grid {
-    margin-top: 28px;
+    margin-top: 35px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 
 .item {
-    padding: 25px;
-    background: rgba(255, 255, 255, .35);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
     text-align: center;
-    transition: .3s;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .item:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 40px rgba(107, 75, 160, .2);
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 12px 35px rgba(168, 213, 255, 0.25);
 }
 
 .item .icon {
-    font-size: 2.2em;
-    margin-bottom: 10px;
+    font-size: 2.5em;
+    margin-bottom: 15px;
 }
 
 .item .t {
     font-weight: 600;
-    color: #6a4b90;
-    margin-bottom: 6px;
+    color: #5a8fc4;
+    margin-bottom: 8px;
+    font-size: 1.1em;
 }
 
 .item .d {
-    font-size: .9em;
-    color: #666;
+    font-size: 0.9em;
+    color: #6a8aaa;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
-/* --- Lista razones --- */
+/* --- Lista suave --- */
 .reason {
-    padding: 18px 25px;
-    background: rgba(255, 255, 255, .35);
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
     border-radius: 18px;
-    margin-bottom: 12px;
-    color: #6a4b90;
+    margin-bottom: 15px;
+    color: #4a6b8a;
     font-size: 1.05em;
     font-weight: 500;
     cursor: pointer;
-    transition: .3s;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .reason:hover {
-    background: rgba(255, 255, 255, .55);
-    transform: translateX(14px);
-    box-shadow: 0 10px 30px rgba(233, 30, 99, .25);
+    background: rgba(255, 255, 255, 0.55);
+    transform: translateX(12px);
+    box-shadow: 0 8px 25px rgba(168, 213, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Contador --- */
+/* Contador */
+.counter-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* espacio entre los bloques */
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.counter-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counter-number {
+    font-size: 3em;
+    font-weight: 700;
+    color: #5a8fc4;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 20px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(168, 213, 255, 0.2);
+    min-width: 80px;
+    text-align: center;
+}
+
+.counter-label {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #4a6b8a;
+    font-size: 1em;
+    text-align: center;
+}
+
+.counter-footer {
+    margin-top: 25px;
+    font-size: 1em;
+    color: #4a6b8a;
+    text-align: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3em;
+        letter-spacing: -2px;
+    }
+    
+    .heart-3d {
+        width: 110px;
+        height: 110px;
+        font-size: 2.8em;
+        border-radius: 25px;
+    }
+    
+    .subtitle {
+        font-size: 1em;
+        padding: 0 10px;
+    }
+    
+    .card {
+        padding: 35px 25px;
+    }
+    
+    .card h2 {
+        font-size: 1.6em;
+    }
+    
+    .card p {
+        font-size: 1em;
+    }
+    
+    nav {
+        padding: 10px 18px;
+        gap: 5px;
+    }
+    
+    .nav-item {
+        font-size: 0.8em;
+        padding: 6px 14px;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 120px 20px 60px;
+    }
 }
